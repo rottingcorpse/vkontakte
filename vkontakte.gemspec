@@ -10,11 +10,16 @@ Gem::Specification.new do |s|
   s.authors     = ["Sergey Tsvetkov"]
   s.email       = ["sergey.a.tsvetkov@gmail.com"]
   s.homepage    = "http://vkshop.kimrgrey.org"
-  s.summary     = ""
+  s.summary     = "Simple wrapper for VKontakte API"
   s.description = ""
 
-  s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.rdoc"]
+  s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.md"]
   s.test_files = Dir["test/**/*"]
+  
+  s.require_paths = ['lib']
 
   s.add_dependency "rails", "~> 3.2.8"
+  s.add_dependency 'activesupport', '>= 3.0.0'
+  s.add_dependency 'nokogiri', ['>= 1.5']
+  s.add_dependency 'curb'
 end
