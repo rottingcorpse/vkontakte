@@ -72,6 +72,7 @@ module Vkontakte
     api_method :photos, :save
     api_method :photos, :move
     api_method :audio, :get
+    api_method :newsfeed, :search
 
     alias :users :users_get
     alias :photos :photos_get
