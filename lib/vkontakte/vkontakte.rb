@@ -59,7 +59,7 @@ module Vkontakte
     
     def self.request_access_token(code, redirect)
       json = ActiveSupport::JSON.decode(open(access_token_url(code,redirect)))
-      yield json["access_token"], json["user_id"]
+      yield json["access_token"], json["user_id"], json["expires_in"]
     end
 
     api_method :users, :get
