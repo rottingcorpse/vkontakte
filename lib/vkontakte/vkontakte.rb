@@ -71,11 +71,13 @@ module Vkontakte
     api_method :photos, :get_upload_server
     api_method :photos, :save
     api_method :photos, :move
+    api_method :photos, :edit
     api_method :audio, :get
     api_method :newsfeed, :search
 
     alias :users :users_get
     alias :photos :photos_get
+    alias :edit_photo :photos_edit
     alias :photo_albums :photos_get_albums
     alias :create_photo_album :photos_create_album
     alias :photo_albums_count :photos_get_albums_count
