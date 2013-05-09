@@ -16,8 +16,21 @@ module Vkontakte
     end
   end
 
-  class Application
+  def self.execute(method_name, options, &block)
+    options ||= {}
+    params = options.map{ |k,v| "#{k.to_s}=#{v.to_s}" }.join("&")
+    url = URI::encode "#{Vkontakte.config.api_base_url}/#{method_name}?#{params}"
+    json = ActiveSupport::JSON.decode open(url)
+    if json["error"].present? 
+      error = json["error"]
+      params = error["request_params"].map { |p| {:key => p["key"], :value => p["value"]} }
+      raise MethodCallError.new(method_name, error["error_code"], error["error_msg"], params)
+    else
+      block_given? ? yield(json) : json["response"]
+    end
+  end
 
+  class Application
     def self.api_method(scope, method, &block)
       method_name = "#{scope.to_s}_#{method.to_s}"
       url_method_name = "#{scope.to_s}_#{method.to_s}_url"
