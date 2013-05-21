@@ -87,7 +87,7 @@ module Vkontakte
     api_method :photos, :edit
     api_method :audio, :get
     api_method :newsfeed, :search
-    api_methods :friends, :get
+    api_method :friends, :get
 
     alias :users :users_get
     alias :friends, :friends_get
